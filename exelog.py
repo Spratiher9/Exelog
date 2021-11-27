@@ -6,7 +6,7 @@ from typing import Callable
 _FUNCTION_POINTERS = {}
 
 
-def on_first_time(intro: Callable) -> Callable[[Callable], Callable]:
+def initialized_call(intro: Callable) -> Callable[[Callable], Callable]:
     """
     Decorator to inject an "intro" callable the first time
     the decorated function is called
@@ -48,30 +48,30 @@ def on_first_time(intro: Callable) -> Callable[[Callable], Callable]:
     return decorator
 
 
-def ensure_basic_logging(f=None, **kwargs) -> Callable:
+def enable_exelog(f=None, **kwargs) -> Callable:
     """
     Decorator to ensure that `logging.basicConfig` is called
     when the decorated function is called for the first time.
     """
-    decorator = on_first_time(lambda: logging.basicConfig(**kwargs))
+    decorator = initialized_call(lambda: logging.basicConfig(**kwargs))
     # Was decorator used without parenthesis or parameterized?
     return decorator(f) if callable(f) else decorator
 
 
 # Predefined decorator for stderr/NOTSET logging
-ensure_notset_logging = ensure_basic_logging(level=logging.NOTSET)
+enable_notset_logging = enable_exelog(level=logging.NOTSET)
 
 # Predefined decorator for stderr/DEBUG logging
-ensure_debug_logging = ensure_basic_logging(level=logging.DEBUG)
+enable_debug_logging = enable_exelog(level=logging.DEBUG)
 
 # Predefined decorator for stderr/INFO logging
-ensure_info_logging = ensure_basic_logging(level=logging.INFO)
+enable_info_logging = enable_exelog(level=logging.INFO)
 
 # Predefined decorator for stderr/WARN logging
-ensure_warn_logging = ensure_basic_logging(level=logging.WARN)
+enable_warn_logging = enable_exelog(level=logging.WARN)
 
 # Predefined decorator for stderr/ERROR logging
-ensure_error_logging = ensure_basic_logging(level=logging.ERROR)
+enable_error_logging = enable_exelog(level=logging.ERROR)
 
 # Predefined decorator for stderr/CRITICAL logging
-ensure_critical_logging = ensure_basic_logging(level=logging.CRITICAL)
+enable_critical_logging = enable_exelog(level=logging.CRITICAL)
