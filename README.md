@@ -1,10 +1,10 @@
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/xlog)
 [![PyPI](https://img.shields.io/pypi/v/xlog)](https://pypi.org/project/xlog/)
 
-# xLog: Meticulous logging for Apache Spark
+# Exelog: Meticulous logging for Apache Spark
 ### _Enabling meticulous logging for Spark Applications_
 
-`xLog` is a refactored logging module that provides a decorator based approach to ensure standard Python logging
+`Exelog` is a refactored logging module that provides a decorator based approach to ensure standard Python logging
 from PySpark Executor nodes also.
 
 ## Why? 
@@ -38,7 +38,7 @@ The initial `describe()` happens in the driver and has root handlers because of 
 the `describe()` calls in the `map()` happen in separate executor processes (note the different PIDs) and got no 
 root handlers.
 
-## xLog: Logging Spark executor execution one decorator at a time
+## Exelog: Logging Spark executor execution one decorator at a time
 
 Various ways for setting up logging in your executors may be found on the internet. It usually entails sending 
 and loading a separate file containing logging configuration code. Depending on your use case, managing this 
