@@ -12,6 +12,8 @@
 `Exelog` is a refactored logging module that provides a decorator based approach to ensure standard Python logging from
 PySpark Executor nodes also.
 
+Drop a 🌟 if this project helps and you would like to see more development on it.
+
 ### Installation
 
 ```shell
