@@ -2,9 +2,8 @@
 
 ![Exelog: Meticulous logging for Apache Spark](https://raw.githubusercontent.com/Spratiher9/Files/master/xLogs.gif)
 
-[comment]: <> (![PyPI - Python Version]&#40;https://img.shields.io/pypi/pyversions/exelog&#41;)
-
-[comment]: <> ([![PyPI]&#40;https://img.shields.io/pypi/v/exelog&#41;]&#40;https://pypi.org/project/exelog/&#41;)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/exelog)
+[![PyPI](https://img.shields.io/pypi/v/exelog)](https://pypi.org/project/exelog/)
 
 # Exelog: Meticulous logging for Apache Spark
 
@@ -12,6 +11,12 @@
 
 `Exelog` is a refactored logging module that provides a decorator based approach to ensure standard Python logging from
 PySpark Executor nodes also.
+
+### Installation
+
+```shell
+pip install exelog
+```
 
 ## Why?
 
