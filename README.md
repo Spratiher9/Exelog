@@ -1,6 +1,6 @@
 [comment]: <> (<a href="https://ibb.co/jhTdDPZ"><img src="https://i.ibb.co/6Ym2F7J/xLogs.gif" alt="Exelog: Meticulous logging for Apache Spark" border="0"></a>)
 
-![Exelog: Meticulous logging for Apache Spark](https://i.ibb.co/rkmgHRf/xLogs.gif)
+![Exelog: Meticulous logging for Apache Spark](https://raw.githubusercontent.com/Spratiher9/Files/master/xLogs.gif)
 
 [comment]: <> (![PyPI - Python Version]&#40;https://img.shields.io/pypi/pyversions/exelog&#41;)
 
