@@ -33,7 +33,7 @@ handler that will show `warning()` and `error()` messages in their bare format o
 we probably need something more flexible and powerful than that.
 
 Illustration in interactive PySpark shell:
-
+```python
     >>> import os, logging
     >>> logging.basicConfig(level=logging.INFO)
     
@@ -45,7 +45,7 @@ Illustration in interactive PySpark shell:
 
     >>> sc.parallelize([4, 1, 7]).map(lambda x: describe()).collect()
     ['pid: 9111, root handlers: []', 'pid: 9128, root handlers: []', 'pid: 9142, root handlers: []']
-
+```
 The initial `describe()` happens in the driver and has root handlers because of the `basicConfig()` beforehand. However,
 the `describe()` calls in the `map()` happen in separate executor processes (note the different PIDs) and got no root
 handlers.
@@ -61,14 +61,14 @@ In contrast, `Exelog` takes a decorator based approach. We just have to decorate
 are passing to `map()`, `filter()`, `sortBy()`, etc.
 
 A very minimal example:
-
+```python
     @exelog.enable_info_logging
     def process(x):
         logger.info("Got {x}".format(x=x))
         return x * x
     
     result = rdd.map(process).collect()
-
+```
 What will happen here is that the first time `process()` is called in the executor, basic logging is set up with `INFO`
 level, so that logging messages are not lost.
 
@@ -77,7 +77,7 @@ level, so that logging messages are not lost.
 The `enable_exelog` decorator will do a basic logging setup using
 [`logging.basicConfig()`](https://docs.python.org/3/library/logging.html#logging.basicConfig), and desired options can
 be directly provided to the decorator as illustrated in the following example using the interactive PySpark shell:
-
+```python
     >>> import logging
     >>> from exelog import enable_exelog
     >>> logger = logging.getLogger("example")
@@ -94,9 +94,9 @@ be directly provided to the decorator as illustrated in the following example us
     INFO:example:Got 2
     INFO:example:Got 4
     [0, 1, 4, 9, 16]
-
+```
 To improve readability or code reuse, you can of course predefine decorators:
-
+```python
     with_logging = enable_exelog(
         level=logging.INFO,
         format="[%(process)s/%(name)s] %(levelname)s %(message)s"
@@ -105,9 +105,9 @@ To improve readability or code reuse, you can of course predefine decorators:
     @with_logging
     def process(x):
         ...
-
+```
 `exelog` also defines some simple predefined decorators:
-
+```python
     # Predefined decorator for stderr/NOTSET logging
     enable_notset_logging = enable_exelog(level=logging.NOTSET)
     
@@ -125,7 +125,7 @@ To improve readability or code reuse, you can of course predefine decorators:
     
     # Predefined decorator for stderr/CRITICAL logging
     enable_critical_logging = enable_exelog(level=logging.CRITICAL)
-
+```
 ### Fine-grained logging set up
 
 If the `logging.basicConfig()` API is not flexible enough for your desired setup, you can also inject more advanced
