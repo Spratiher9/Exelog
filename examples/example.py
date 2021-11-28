@@ -16,11 +16,11 @@ from exelog import enable_exelog
 
 logger = logging.getLogger("example")
 
-
 with_logging = enable_exelog(
     level=logging.INFO,
     format="[%(process)s/%(name)s] %(levelname)s %(message)s"
 )
+
 
 @with_logging
 def process(x):

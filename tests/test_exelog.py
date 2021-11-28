@@ -67,7 +67,7 @@ def test_enable_exelog_output():
         fmt = "%(levelname)s:%(name)s:%(message)s"
 
         @exelog.enable_exelog(level=logging.INFO, format=fmt,
-                                    stream=buffer)
+                              stream=buffer)
         def process(x):
             root.info("Got {x!r}".format(x=x))
             return x * 2
