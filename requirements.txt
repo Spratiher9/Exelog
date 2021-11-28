@@ -1,0 +1,12 @@
+atomicwrites
+attrs
+colorama
+iniconfig
+packaging
+pluggy
+py
+py4j
+pyparsing
+pyspark
+pytest
+toml
